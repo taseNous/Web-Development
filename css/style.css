@@ -1,0 +1,574 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: url("../img/background.jpg") center / cover no-repeat;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding: 0 10px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding: 22px 0;
+}
+
+.navbar .logo {
+    display: flex;
+    gap: 10px;
+    text-decoration: none;
+    align-items: center;
+}
+
+.navbar .logo img{
+    width: 40px;
+    border-radius: 50%;
+}
+
+.navbar .logo h2 {
+    color: #fff;
+    font-size: 1.7rem;
+    font-weight: 600;
+
+}
+
+.navbar .links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.navbar .links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.navbar .links a:hover{
+    color: #19e8ff;
+}
+
+.navbar .login-btn {
+    border: none;
+    outline: none;
+    color: #275360;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    background: #fff;
+}
+
+.navbar .logout-btn {
+    border: none;
+    outline: none;
+    color: #275360;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    background: #fff;
+}
+
+.blur-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(5px);
+    transition: 0.1s ease;
+}
+
+.show-popup .blur-bg-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.greeting {
+    padding-top: 100px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.form-popup {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    max-width: 720px;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    background: #fff;
+    border: 2px solid #fff;
+    transform: translate(-50%, -50%);
+}
+
+.show-popup .form-popup {
+    opacity: 1;
+    pointer-events: auto;
+    transform:  translate(-50%, -50%);
+    transition: transform 0.3s ease, opacity 0.1s;
+}
+
+.form-popup .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #878484;
+    cursor: pointer;
+}
+
+.form-popup .form-box {
+    display: flex;
+}
+
+.form-box .form-details {
+    max-width: 330px;
+    width: 100%;
+    color: #fff;
+    display: flex;
+    padding: 0 20px;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url("../img/login.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.login .form-details {
+    background: url("../img/login.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.signup .form-details {
+    background: url("../img/signup.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-box .form-content {
+    width: 100%;
+    padding: 35px;
+}
+
+form .ipnut-field {
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+form .ipnut-field input{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 0 15px;
+    font-size: 0.95rem;
+    border-radius: 3px;
+    border: 1px solid #717171;
+}
+
+form .ipnut-field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    color: #717171;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.ipnut-field input:is(:focus, :valid) ~ label{
+    color: #19e8ff;
+    font-size: 0.75rem;
+    transform: translateY(-50%);
+}
+
+form button {
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 14px 0;
+    border-radius: 3px;
+    margin: 25px 0;
+    color: #fff;
+    cursor: pointer;
+    background: #19e8ff;
+    transition: 0.2s ease;
+}
+
+form button:hover {
+    background: #0097a7;
+}
+
+.form-box .bottom-link {
+    text-align: center;
+}
+
+.form-popup .signup,
+.form-popup.show-signup .login {
+    display: none;
+}
+
+.form-popup.show-signup .signup {
+    display: flex;
+}
+
+.signup .policy-text input {
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+}
+
+@media (max-width: 950px) {
+    .navbar .logo img {
+        display: none;
+    }
+
+    .navbar .logo h2 {
+        font-size: 1.4rem;
+    }
+
+    .navbar .links {
+        display: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .form-popup {
+        width: 95%;
+    }
+
+    .fomr-box .form-details {
+        display: none;
+    }
+
+    .fomr-box .form-content {
+        padding: 30px 20px;
+    }
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    z-index: 1000;
+    padding: 20px 0;
+}
+
+.footer-bar {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.footer-bar .col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-bar .col h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.footer-bar .col a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.footer-bar .col a:hover {
+    color: #19e8ff;
+}
+
+/* Example CSS to add spacing below the navbar */
+main {
+    margin-top: 50px; /* Adjust the margin as needed */
+    padding: 50px;    /* Optional padding */
+}
+
+/* Optional: Specific styling for the "Manage Inventory" heading */
+h2 {
+    margin-top: 20px; /* Add space above the heading if needed */
+    font-size: 24px;  /* Adjust the font size */
+}
+
+/* Flex container for table and form */
+.inventory-management {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center the elements */
+    margin-top: 20px; /* Adjust this value for spacing below the header */
+    gap: 20px; /* Space between table and form */
+}
+
+/* Style for the table section */
+.table {
+    flex: 1; /* Allow the table to take up available space */
+    display: flex;
+    justify-content: center; /* Center horizontally within its own space */
+}
+
+/* Style for the form section */
+.col-md-4 {
+    flex: 1; /* Allow the form to take up available space */
+    display: flex;
+    justify-content: left; /* Center horizontally within its own space */
+}
+
+/* Ensure row content is below the table and form */
+.row {
+    margin-top: 30px; /* Space between the form/table and this section */
+    text-align: left; /* Center the text content in the row */
+}
+
+form .input-field {
+    position: relative;
+    margin-top: 20px;
+}
+
+form .input-field input {
+    width: 100%;
+    height: 30px;
+    outline: none;
+    padding: 0 15px;
+    font-size: 0.95rem;
+    border-radius: 3px;
+    border: 1px solid #717171;
+}
+
+form .input-field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    color: #717171;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.2s ease all;
+}
+
+form .input-field input:focus ~ label,
+form .input-field input:valid ~ label,
+form .input-field input:not(:placeholder-shown) ~ label {
+    color: #19e8ff;
+    font-size: 0.75rem;
+    top: -10px;
+}
+
+form .input-field label.focused {
+    font-size: 0.75rem;
+    top: -10px;
+    color: #19e8ff;
+}
+
+.add-requests {
+    width: 50%;
+    float: left;
+}
+
+.request-history {
+    width: 50%;
+    float: right;
+}
+
+#map {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    margin-top: 100px; /* Height of the navbar */
+    margin-bottom: 200px; /* Height of the footer */
+}
+
+.coordinate {
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+}
+
+.leaflet-popup-content-wrapper {
+    background-color: #000000;
+    color: #fff;
+    border: 1px solid red;
+    border-radius: 0px;
+}
+
+/* Custom filter control styles */
+.leaflet-control-layers-toggle-filters {
+    background-color: white;
+    padding: 10px;
+    font-size: 14px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.leaflet-control-inventory-panel {
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 250px;
+}
+
+.leaflet-control-inventory-panel h4 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    text-align: center;
+}
+
+.product-item {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-item:last-child {
+    border-bottom: none;
+}
+
+#closeInventoryBtn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/* Panel styles */
+.leaflet-control-offer-request-panel {
+    background-color: #ffffff; /* Solid white background */
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Slightly darker shadow for better contrast */
+    border-radius: 5px;
+    display: none;
+    width: 500px;
+    position: absolute;
+    bottom: 70px;
+    left: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    color: #333; /* Text color for better readability */
+}
+
+.leaflet-control-offer-request-panel h4 {
+    margin-top: 0;
+}
+
+.leaflet-control-offer-request-panel table {
+    width: 100%;
+    font-size: 12px;
+    border-collapse: collapse;
+    background-color: #ffffff; /* Ensures table background is white */
+}
+
+.leaflet-control-offer-request-panel table th,
+.leaflet-control-offer-request-panel table td {
+    padding: 5px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.leaflet-control-offer-request-panel table th {
+    background-color: #f4f4f4; /* Slight gray background for table headers */
+}
+
+.leaflet-control-offer-request-panel table td button {
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.leaflet-control-offer-request-panel .btn {
+    margin-top: 10px;
+}
+
+.leaflet-control-button {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 10px;
+}
+.leaflet-control-panel {
+    display: none; /* Start with the panel hidden */
+    background-color: white; /* White background for readability */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adds a slight shadow for better visibility */
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+
+.user-offers-section {
+    margin-top: 50px;
+}
+
+.user-offers-header h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.user-offers-table {
+    width: 100%;
+}
